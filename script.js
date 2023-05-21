@@ -1,20 +1,24 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Mendapatkan elemen dengan ID greetingText
-    var greetingText = document.getElementById('greetingText');
-    
-    // Mendapatkan elemen dengan ID dateTime
-    var dateTime = document.getElementById('dateTime');
-    
-    // Mendapatkan tanggal dan waktu terkini
-    var currentDate = new Date();
-    
-    // Menampilkan kalimat salam berdasarkan waktu terkini
-    var currentHour = currentDate.getHours();
+function updateDateTime() {
+    var now = new Date();
+    var hour = now.getHours();
     var greeting = '';
-    
-    if (currentHour < 12) {
+
+    if (hour < 12) {
       greeting = 'Good morning';
-    } else if (currentHour < 18) {
+    } else if (hour < 18) {
       greeting = 'Good afternoon';
     } else {
-      greeting =
+      greeting = 'Good evening';
+    }
+
+    var datetimeElement = document.getElementById('datetime');
+    datetimeElement.textContent = now.toDateString() + ' ' + now.toLocaleTimeString();
+
+    var greetingElement = document.getElementById('greeting');
+    greetingElement.textContent = greeting;
+  }
+
+  setInterval(updateDateTime, 1000); // Perbarui setiap detik
+</script>
+</body>
+</html>
